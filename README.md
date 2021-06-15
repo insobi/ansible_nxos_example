@@ -2,7 +2,7 @@
 This repository is a very simple example for getting data from NSOX devices using ansible.
 
 <br><br>
-# prerequsite
+# prerequisite
 - ansible collection: cisco.nxos
 
 <br><br>
