@@ -1,0 +1,12 @@
+[nexus]
+10.106.236.5
+10.106.236.6
+
+[nexus:vars]
+ansible_connection=ansible.netcommon.network_cli
+ansible_network_os=cisco.nxos.nxos
+ansible_user=CHANGE_ME
+ansible_password=CHANGE_ME
+ansible_become=yes
+ansible_become_method=enable
+ansible_become_password=CHANGE_ME

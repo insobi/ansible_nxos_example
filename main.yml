@@ -1,0 +1,27 @@
+---
+- name: Cisco Nexus Switch
+  hosts: nexus
+  gather_facts: no
+  connection: ansible.netcommon.network_cli
+
+  tasks:
+    - name: get version info
+      cisco.nxos.nxos_command:
+        commands: show version | json-pretty
+      register: showversion
+    
+    - name: extract specific attributes
+      debug: msg="{{ showversion | json_query('{hostname:stdout[0].host_name, version:stdout[0].kickstart_ver_str}') }}"
+      register: extracted
+
+    - name: merge results as a single
+      debug:
+        msg: "{{ ansible_play_hosts | map('extract', hostvars, 'extracted') | map(attribute='msg') | list }}"
+      run_once: yes
+      register: merged_results
+    
+    - name: create file
+      copy:
+        content: "{{ merged_results.msg }}"
+        dest: results_manipuled.json
+      run_once: yes
