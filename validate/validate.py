@@ -84,7 +84,7 @@ class validate():
         seq = 0
         res = "["
         for item in index_values:
-            res += "{\"" + index + "\":\"" + index_values[seq] + "\", \""  + valid_key + "\":\"" + valid_values[seq] + "\", \"valid\": \"" + resolved[seq] + "\"},"
+            res += "{\"" + index + "\":\"" + str(index_values[seq]) + "\", \""  + valid_key + "\":\"" + str(valid_values[seq]) + "\", \"valid\": \"" + str(resolved[seq]) + "\"},"
             seq += 1
         res = res[:-1] + "]"
         return res
