@@ -56,3 +56,8 @@ As a results, you can see below file created.
     }
 ]
 ```
+
+<br>
+
+# Reference
+- https://hackersandslackers.com/extract-data-from-complex-json-python/
