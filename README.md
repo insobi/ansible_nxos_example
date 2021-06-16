@@ -1,6 +1,8 @@
 # ansible_nsox_example
 This repository is a very simple example for getting data from NSOX devices using ansible.
 
+![overview](images/overview.png)
+
 <br><br>
 # Prerequisite
 - ansible collection: cisco.nxos
