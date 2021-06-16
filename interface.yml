@@ -14,7 +14,6 @@
       debug: 
         msg: "{{ interface | json_query('stdout[0].TABLE_interface.ROW_interface[].{interface:interface, state:state}') }}"
       register: extracted
-      run_once: yes
 
     - name: merge results as a single
       debug:
