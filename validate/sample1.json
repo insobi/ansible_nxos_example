@@ -1,0 +1,10 @@
+[
+    {
+        "hostname": "N3K-C31108PC-V-1",
+        "version": "9.3(6)"
+    },
+    {
+        "hostname": "N3K-C31108PC-V-2",
+        "version": "9.4"
+    }
+]
