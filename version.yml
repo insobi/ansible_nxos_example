@@ -7,7 +7,7 @@
   tasks:
     - name: get version info
       cisco.nxos.nxos_command:
-        commands: show version | json-pretty
+        commands: show version | json
       register: showversion
     
     - name: extract specific attributes
@@ -23,5 +23,5 @@
     - name: create file
       copy:
         content: "{{ merged_results.msg }}"
-        dest: results_manipuled.json
+        dest: version.json
       run_once: yes
