@@ -41,7 +41,7 @@ Next, this is a rule file.
 }
 ```
 
-As a results, you can see below.
+As a results, you can see below file created.
 ```
 [
     {
