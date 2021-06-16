@@ -1,0 +1,10 @@
+{
+    "rule_name": "version check",
+    "rule": {
+        "valid_key": "version",
+        "valid_value": "9.3(6)",
+        "condition": "eq",
+        "when_validated": "OK",
+        "when_not_validated": "FAILED"
+    }
+}
