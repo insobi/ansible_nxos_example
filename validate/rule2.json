@@ -1,5 +1,5 @@
 {
-    "rule_name":   "version check",
+    "rule_name":   "interface check",
     "index":       "interface",
     "valid_key":   "state",
     "valid_value": "up",
