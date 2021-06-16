@@ -14,4 +14,4 @@ ansible-playbook -i hosts main.yml
 ```
 As a result, Json file will be created like below.
 
-![result](images/result_json.png)
+![result](images/result.png)
