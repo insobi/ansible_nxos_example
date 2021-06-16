@@ -1,0 +1,29 @@
+---
+- name: Cisco Nexus Switch
+  hosts: nexus
+  gather_facts: no
+  connection: ansible.netcommon.network_cli
+
+  tasks:
+    - name: get interface info
+      cisco.nxos.nxos_command:
+        commands: show interface | json
+      register: interface
+    
+    - name: extract specific attributes
+      debug: 
+        msg: "{{ interface | json_query('stdout[0].TABLE_interface.ROW_interface[].{interface:interface, state:state}') }}"
+      register: extracted
+      run_once: yes
+
+    - name: merge results as a single
+      debug:
+        msg: "{{ ansible_play_hosts | map('extract', hostvars, 'extracted') | map(attribute='msg') | list }}"
+      run_once: yes
+      register: merged_interface
+    
+    - name: create file
+      copy:
+        content: "{{ merged_interface.msg }}"
+        dest: interface.json
+      run_once: yes
