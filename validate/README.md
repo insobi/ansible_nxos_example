@@ -5,11 +5,11 @@ This is a simple validator for specific value in JSON file.
 # How to run
 
 ```
-# python validation.py -r [RULE_FILE] -s [SOURCE_FILE] -o [OUTPUT_FILE]
+# python validate.py -r [RULE_FILE] -s [SOURCE_FILE] -o [OUTPUT_FILE]
 
-python validation.py --rule rule1.json --source example1.json --output output1.json
+python validate.py --rule rule1.json --source example1.json --output output1.json
 
-python validation.py --rule rule2.json --source example2.json --output output2.json
+python validate.py --rule rule2.json --source example2.json --output output2.json
 ```
 <br>
 
