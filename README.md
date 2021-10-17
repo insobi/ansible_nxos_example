@@ -10,7 +10,7 @@ This repository is a very simple example for getting data from NSOX devices usin
 <br><br>
 # How to run
 ```
-ansible-playbook -i hosts version.yml
+ansible-playbook version.yml
 ```
 As a result, Json file will be created like below.
 
