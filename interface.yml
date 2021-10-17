@@ -23,6 +23,6 @@
     
     - name: create file
       copy:
-        content: "{{ merged_interface.msg }}"
+        content: "{{ merged_interface.msg | to_nice_json }}"
         dest: interface.json
       run_once: yes

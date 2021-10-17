@@ -22,6 +22,6 @@
     
     - name: create file
       copy:
-        content: "{{ merged_results.msg }}"
+        content: "{{ merged_results.msg | to_nice_json }}"
         dest: version.json
       run_once: yes
