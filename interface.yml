@@ -16,13 +16,12 @@
       register: extracted
 
     - name: merge results as a single
-      debug:
-        msg: "{{ ansible_play_hosts | map('extract', hostvars, 'extracted') | map(attribute='msg') | list }}"
+      set_fact:
+        merged_interface: "{{ ansible_play_hosts | map('extract', hostvars, 'extracted') | map(attribute='msg') | list }}"
       run_once: yes
-      register: merged_interface
     
     - name: create file
       copy:
-        content: "{{ merged_interface.msg | to_nice_json }}"
+        content: "{{ merged_interface | to_nice_json }}"
         dest: interface.json
       run_once: yes
