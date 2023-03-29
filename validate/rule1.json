@@ -1,9 +1,0 @@
-{
-    "rule_name":   "version check",
-    "index":       "hostname",
-    "valid_key":   "version",
-    "valid_value": "9.3(6)",
-    "condition":   "eq",
-    "if_valid":    "SUCCESS",
-    "if_invalid":  "FAIL"
-}

@@ -1,9 +1,0 @@
-{
-    "rule_name":   "interface check",
-    "index":       "interface",
-    "valid_key":   "state",
-    "valid_value": "up",
-    "condition":   "eq",
-    "if_valid":    "SUCCESS",
-    "if_invalid":  "FAIL"
-}
