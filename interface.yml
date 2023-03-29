@@ -1,27 +1,25 @@
 ---
-- name: Cisco Nexus Switch
-  hosts: nexus
+- hosts: nexus
   gather_facts: no
   connection: ansible.netcommon.network_cli
 
   tasks:
-    - name: get interface info
-      cisco.nxos.nxos_command:
-        commands: show interface | json
-      register: interface
-    
-    - name: extract specific attributes
-      debug: 
-        msg: "{{ interface | json_query('stdout[0].TABLE_interface.ROW_interface[].{interface:interface, state:state}') }}"
-      register: extracted
+  - name: Get interface information in JSON format
+    cisco.nxos.nxos_command:
+      commands: show interface brief | json
+    register: interface
 
-    - name: merge results as a single
-      set_fact:
-        merged_interface: "{{ ansible_play_hosts | map('extract', hostvars, 'extracted') | map(attribute='msg') | list }}"
-      run_once: yes
-    
-    - name: create file
-      copy:
-        content: "{{ merged_interface | to_nice_json }}"
-        dest: interface.json
-      run_once: yes
+  - name: Extract only ethernet attributes from all interfaces
+    ansible.builtin.set_fact: 
+      extracted: "{{ interface | json_query('stdout[0].TABLE_interface.ROW_interface[?type==`eth`]') }}"
+
+  - name: Generate interface information file in CSV format
+    ansible.builtin.copy:
+      content: |
+        host,interface,state,speed,portmode
+        {% for host in ansible_play_hosts %}
+        {% for item in extracted %}
+        {{ host }},{{ item['interface'] }},{{ item['state'] }},{{ item['speed'] }},{{ item['portmode'] }}
+        {% endfor %}
+        {% endfor %}
+      dest: interfaces.csv

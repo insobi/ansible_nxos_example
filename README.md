@@ -1,5 +1,5 @@
-# ansible_nsox_example
-This repository is a very simple example for getting data from NSOX devices using ansible.
+# Ansible NXOS Example
+A very simple examples for collecting data from Cisco Nexus devices using ansible.
 
 ![overview](images/overview.png)
 
@@ -9,12 +9,33 @@ This repository is a very simple example for getting data from NSOX devices usin
 
 <br><br>
 # How to run
-```
-ansible-playbook version.yml
-```
-As a result, Json file will be created like below.
+1. Edit inventory file
+    ```
+    [nexus]
+    n3k1 ansible_host=CHANGE_ME ansible_user=CHANGE_ME ansible_password=CHANGE_ME
+    n3k2 ansible_host=CHANGE_ME ansible_user=CHANGE_ME ansible_password=CHANGE_ME
 
-![result](images/result.png)
+    [nexus:vars]
+    ansible_connection=ansible.netcommon.network_cli
+    ansible_network_os=cisco.nxos.nxos
+    ```
+
+2. Run playbook
+    ```
+    ansible-playbook -i hosts version.yml
+    ansible-playbook -i hosts interface.yml
+
+    ```
+
+3. As a result, 2 files are created.
+
+    - version.json
+
+    ![result](images/result_json.png)
+
+    - interfaces.csv
+    
+    ![result](images/result_csv.png)
 
 <br>
 
