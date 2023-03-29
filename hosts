@@ -1,6 +1,6 @@
 [nexus]
-10.106.236.5 ansible_user=CHANGE_ME ansible_password=CHANGE_ME
-10.106.236.6 ansible_user=CHANGE_ME ansible_password=CHANGE_ME
+n3k1 ansible_host=CHANGE_ME ansible_user=CHANGE_ME ansible_password=CHANGE_ME
+n3k2 ansible_host=CHANGE_ME ansible_user=CHANGE_ME ansible_password=CHANGE_ME
 
 [nexus:vars]
 ansible_connection=ansible.netcommon.network_cli
